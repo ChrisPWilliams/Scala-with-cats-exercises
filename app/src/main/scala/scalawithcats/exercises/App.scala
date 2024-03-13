@@ -4,6 +4,7 @@
 package scalawithcats.exercises
 
 import scalawithcats.exercises.PrintableInstances._
+import scalawithcats.exercises.PrintableSyntax._
 
 final case class Cat(name: String, age: Int, colour: String)
 
@@ -14,7 +15,7 @@ object App {
       age = 3,
       colour = "black"
     )
-    Printable.print(cat)
+    cat.print
   }
 
 }
