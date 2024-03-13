@@ -27,6 +27,8 @@ dependencies {
 
     implementation "gradle.plugin.com.github.johnrengelman:shadow:7.1.2"
 
+    implementation "org.typelevel:cats-core_2.13:2.1.0"
+
     // Use Scalatest for testing our library
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.scalatest:scalatest_2.13:3.2.15'

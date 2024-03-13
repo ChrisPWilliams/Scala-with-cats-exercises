@@ -3,19 +3,24 @@
  */
 package scalawithcats.exercises
 
-import scalawithcats.exercises.PrintableInstances._
-import scalawithcats.exercises.PrintableSyntax._
+import cats._
+import cats.implicits._
 
 final case class Cat(name: String, age: Int, colour: String)
 
 object App {
   def main(args: Array[String]): Unit = {
+    implicit val catShow: Show[Cat] =
+      new Show[Cat] {
+        def show(c: Cat): String = s"${c.name} is a ${c.age.toString} year-old ${c.colour} cat."
+      }
+
     val cat = Cat(
       name = "Sherlock",
       age = 3,
       colour = "black"
     )
-    cat.print
+    println(cat.show)
   }
 
 }
