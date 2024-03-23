@@ -1,20 +1,28 @@
 package scalawithcats.exercises
 
-trait Semigroup[A] {
-  def combine(x: A, y: A): A
-}
-object Semigroup {
-  def apply[A](implicit semigroup: Semigroup[A]) =
-    semigroup
+import scalawithcats.exercises.customTypeclasses._
+
+object customTypeclasses {
+  trait Semigroup[A] {
+    def combine(x: A, y: A): A
+  }
+
+  object Semigroup {
+    def apply[A](implicit semigroup: Semigroup[A]) =
+      semigroup
+  }
+
+  trait Monoid[A] extends Semigroup[A] {
+    def empty: A
+  }
+
+  object Monoid {
+    def apply[A](implicit monoid: Monoid[A]) =
+      monoid
+  }
 }
 
-trait Monoid[A] extends Semigroup[A] {
-  def empty: A
-}
-object Monoid {
-  def apply[A](implicit monoid: Monoid[A]) =
-    monoid
-}
+
 
 object BooleanMonoidInstances {
   implicit val myOr: Monoid[Boolean] = {
@@ -38,7 +46,7 @@ object BooleanMonoidInstances {
   implicit val myNand: Monoid[Boolean] = {
     new Monoid[Boolean] {
       override def empty: Boolean = false
-      override def combine(x: Boolean, y: Boolean): Boolean = !(x && y)
+      override def combine(x: Boolean, y: Boolean): Boolean = !(x && y) // also no good, not associative
     }
   }
 }

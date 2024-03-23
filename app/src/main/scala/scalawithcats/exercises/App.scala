@@ -5,32 +5,15 @@ package scalawithcats.exercises
 
 import cats._
 import cats.implicits._
+import scalawithcats.exercises.SuperAdder.add
 
-final case class Cat(name: String, age: Int, colour: String)
 
 object App {
   def main(args: Array[String]): Unit = {
-    implicit val catEq: Eq[Cat] = Eq.instance[Cat] {
-      (cat1, cat2) =>
-        cat1.name === cat2.name && cat1.age === cat2.age && cat1.colour === cat2.colour
-    }
-
-    val cat1 = Cat(
-      name = "Sherlock",
-      age = 3,
-      colour = "black"
-    )
-    val cat2 = Cat(
-      name = "Garfield",
-      age = 25,
-      colour = "orange"
-    )
-
-    val optionCat1 = Option(cat1)
-    val optionCat2 = Option.empty[Cat]
-
-    println(cat1 === cat2)
-    println(optionCat1 === optionCat2)
+    val testlist1 = List(1, 2, 3)
+    val testlist2 = List(Some(1), None, Some(3), Some(3))
+    println(add(testlist1))
+    println(add(testlist2))
   }
 
 }

@@ -1,5 +1,7 @@
 package scalawithcats.exercises
 
+case class Cat(name: String, age: Int, colour: String)
+
 trait Printable[A] {
   def format(value: A): String
 }
