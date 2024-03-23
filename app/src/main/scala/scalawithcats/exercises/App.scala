@@ -6,14 +6,17 @@ package scalawithcats.exercises
 import cats._
 import cats.implicits._
 import scalawithcats.exercises.SuperAdder.add
-
+import scalawithcats.exercises.Order
+import scalawithcats.exercises.OrderMonoid._
 
 object App {
   def main(args: Array[String]): Unit = {
     val testlist1 = List(1, 2, 3)
     val testlist2 = List(Some(1), None, Some(3), Some(3))
+    val testList3 = List(Order(totalCost = 2, quantity = 5), Order(totalCost = 35, quantity = 63))
     println(add(testlist1))
     println(add(testlist2))
+    println(add(testList3))
   }
 
 }
